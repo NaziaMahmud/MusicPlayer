@@ -4,9 +4,10 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Music Player</title>
+    <script src="https://cdn.tailwindcss.com"></script>
     <style>
-     body {
-        font-family: 'Inter', sans-serif;
+      body {
+        font-family: "Inter", sans-serif;
         background-color: #f0f2f5; /* Light grey background */
         display: flex;
         justify-content: center;
@@ -31,21 +32,21 @@
       button:hover {
         background: #555;
         transform: scale(1.1);
-      }   
+      }
 
       .player {
         background-color: #ffffff;
-        border-radius: 1.5rem; 
-        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+        border-radius: 1.5rem;
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
         padding: 2rem;
         width: 90%;
         max-width: 400px;
         text-align: center;
         display: flex;
         flex-direction: column;
-        gap: 1.5rem; 
+        gap: 1.5rem;
       }
-       #play {
+      #play {
         width: 60px; /* Larger play button */
         height: 60px;
         font-size: 2rem;
@@ -55,7 +56,7 @@
       #play:hover {
         background: #16a34a; /* Darker green on hover */
       }
-       #volume {
+      #volume {
         width: 80%;
         -webkit-appearance: none; /* Remove default styling */
         appearance: none;
@@ -65,18 +66,17 @@
         border-radius: 0.25rem;
         margin: 0 auto; /* Center the slider */
       }
-
-      
     </style>
   </head>
   <body>
-    
     <div class="player">
       <div class="track-info">
         <h3 id="title">Title</h3>
         <p id="artist">Artist</p>
       </div>
-
+      <audio>
+        <source src="./music/ChillVibes.mp3" />
+      </audio>
       <div class="progress-container" id="progress-container">
         <div class="progress-filled" id="progress-filled"></div>
       </div>
@@ -94,34 +94,37 @@
     </div>
 
     <script>
-      console.log('test')
+      console.log("test");
       const playlist = [
         {
           title: "Chill Vibes",
           artist: "DJ Flow",
-          src: "./music/Chill Vibes.mp3,
+          src: "./music/ChillVibes.mp3",
         },
+
         {
           title: "Lo-Fi Chill",
           artist: "LoFi Artist",
-          src: "./music/Synthwave Jam.mp3",
+          src: "./music/SynthwaveJam.mp3",
         },
         {
           title: "Synthwave Jam",
           artist: "SynthMan",
-          src: "./music/Unicorn Heads.mp3",
+          src: "./music/UnicornHeads.mp3",
         },
-        
       ];
-      let audioplayer = new Audio(playlist[0].src);
-      // const audioElement = new Audio("./music/SoundHelix-Song-1.mp3");
 
-      document.querySelector("#play").addEventListener("click",()=>{
-        // console.log(audioElement.src)
-
-        audioplayer.play();
-      })
+      document.querySelector("#play").addEventListener("click", () => {
+        if (document.querySelector("audio").paused){
+          document.querySelector("audio").play();
       
+        }
+        else (document.querySelector("audio").pause())
+        
+      });
+
+
+
     </script>
   </body>
 </html>
