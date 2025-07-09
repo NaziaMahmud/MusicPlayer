@@ -94,6 +94,28 @@
     </div>
 
     <script>
+      let currentPosition = 0;
+      document.querySelector("#next").addEventListener("click", () => {
+        currentPosition = (currentPosition + 1) % playlist.length;
+        console.log(currentPosition);
+
+        document.querySelector("source").src = playlist[currentPosition].src;
+        document.querySelector("audio").load();
+        document.querySelector("audio").play();
+        document.querySelector("#play").textContent = "⏸";
+      });
+
+      document.querySelector("#prev").addEventListener("click", () =>{
+      currentPosition = (currentPosition - 1) % playlist.length;
+      let currentPosition2= Math.abs(currentPosition);
+      console.log(currentPosition);
+      document.querySelector("source").src = playlist[currentPosition2].src;
+        document.querySelector("audio").load();
+        document.querySelector("audio").play();
+        document.querySelector("#play").textContent = "⏸";
+    })
+
+
       console.log("test");
       const playlist = [
         {
@@ -103,28 +125,27 @@
         },
 
         {
-          title: "Lo-Fi Chill",
+          title: "Synthwave Jam",
           artist: "LoFi Artist",
           src: "./music/SynthwaveJam.mp3",
         },
         {
-          title: "Synthwave Jam",
+          title: "Unicorn Heads",
           artist: "SynthMan",
           src: "./music/UnicornHeads.mp3",
         },
       ];
 
-      document.querySelector("#play").addEventListener("click", () => {
-        if (document.querySelector("audio").paused){
-          document.querySelector("audio").play();
       
+      document.querySelector("#play").addEventListener("click", () => {
+        if (document.querySelector("audio").paused) {
+          document.querySelector("audio").play();
+          document.querySelector("#play").textContent = "⏸";
+        } else {
+          document.querySelector("audio").pause();
+          document.querySelector("#play").textContent = "▶";
         }
-        else (document.querySelector("audio").pause())
-        
       });
-
-
-
     </script>
   </body>
 </html>
