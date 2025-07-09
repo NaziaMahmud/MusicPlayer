@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Music Player</title>
+    <style>
+     body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f0f2f5; /* Light grey background */
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+        margin: 0;
+        text-align: center;
+      }
+
+      button {
+        width: 40px;
+        height: 40px;
+        border: none;
+        border-radius: 60%;
+        background: #3a3a3a;
+        color: white;
+        font-size: 22px;
+        cursor: pointer;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+        transition: background 0.3s ease, transform 0.2s;
+      }
+      button:hover {
+        background: #555;
+        transform: scale(1.1);
+      }   
+
+      .player {
+        background-color: #ffffff;
+        border-radius: 1.5rem; 
+        box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); 
+        padding: 2rem;
+        width: 90%;
+        max-width: 400px;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        gap: 1.5rem; 
+      }
+       #play {
+        width: 60px; /* Larger play button */
+        height: 60px;
+        font-size: 2rem;
+        background: #22c55e; /* Tailwind green-500 */
+      }
+
+      #play:hover {
+        background: #16a34a; /* Darker green on hover */
+      }
+       #volume {
+        width: 80%;
+        -webkit-appearance: none; /* Remove default styling */
+        appearance: none;
+        height: 0.5rem;
+        background: #e0e0e0;
+        outline: none;
+        border-radius: 0.25rem;
+        margin: 0 auto; /* Center the slider */
+      }
+
+      
+    </style>
+  </head>
+  <body>
+    
+    <div class="player">
+      <div class="track-info">
+        <h3 id="title">Title</h3>
+        <p id="artist">Artist</p>
+      </div>
+
+      <div class="progress-container" id="progress-container">
+        <div class="progress-filled" id="progress-filled"></div>
+      </div>
+
+      <div class="controls">
+        <button id="prev" title="Previous">⏮</button>
+        <button id="play" title="Play/Pause">▶</button>
+        <button id="next" title="Next">⏭</button>
+      </div>
+
+      <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
+
+      <!-- The audio element where the music will play -->
+      <audio id="audio"></audio>
+    </div>
+
+    <script>
+      console.log('test')
+      const playlist = [
+        {
+          title: "Chill Vibes",
+          artist: "DJ Flow",
+          src: "./music/Chill Vibes.mp3,
+        },
+        {
+          title: "Lo-Fi Chill",
+          artist: "LoFi Artist",
+          src: "./music/Synthwave Jam.mp3",
+        },
+        {
+          title: "Synthwave Jam",
+          artist: "SynthMan",
+          src: "./music/Unicorn Heads.mp3",
+        },
+        
+      ];
+      let audioplayer = new Audio(playlist[0].src);
+      // const audioElement = new Audio("./music/SoundHelix-Song-1.mp3");
+
+      document.querySelector("#play").addEventListener("click",()=>{
+        // console.log(audioElement.src)
+
+        audioplayer.play();
+      })
+      
+    </script>
+  </body>
+</html>
